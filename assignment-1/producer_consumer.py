@@ -4,6 +4,21 @@ from collections import deque
 
 # Producer-Consumer implementation with blocking queue
 
+''' Idea behind the code:
+Producer (trying to put())        Consumer (running get())
+1. Acquire lock 
+2. Check: queue full? Yes
+3. wait(): Release lock, Sleep     
+---------------------------------4. Acquire lock 
+---------------------------------5. Check: queue empty? No
+---------------------------------6. popleft(): queue now has space
+---------------------------------7. notify_all(): Wake Producer
+---------------------------------8. Release lock
+9. Wake up, re-acquire lock 
+10. Re-check: queue full? NO
+11. append(item)
+12. Release lock'''
+
 class BlockingQueue:
     def __init__(self, max_size=10):
         self.queue = deque()
@@ -18,7 +33,7 @@ class BlockingQueue:
             self.condition.notify_all()
 
     def get(self):
-        with self.condition: #thread safe with locks
+        with self.condition: #thread safe with locks (internally creates mutex)
             while len(self.queue) == 0:
                 self.condition.wait()
             item = self.queue.popleft()
@@ -47,9 +62,9 @@ class Consumer(threading.Thread):
     def run(self):
         while True:
             item = self.queue.get()
-            if item is None:  # poison pill to stop
+            if item is None:  # ceck for stop signal
                 break
-            self.destination.append(item)
+            self.destination.append(item) #store item
             time.sleep(0.01)
 
 
@@ -58,10 +73,10 @@ def run_producer_consumer(source):
     destination = []
 
     producer = Producer(source, queue) #first, create producer thread
-    consumer = Consumer(queue, destination)
+    consumer = Consumer(queue, destination)#create consumer thread
 
     producer.start()#create new thread and run(), this  executles concurrently with the main
-    consumer.start()
+    consumer.start()#start consumer in new thread
 
     producer.join()
     
