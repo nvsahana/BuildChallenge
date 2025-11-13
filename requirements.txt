@@ -1,0 +1,12 @@
+# BuildChallenge Requirements
+# All dependencies are from Python's standard library
+
+# No external packages needed for this project, below is a check on libraries needed for confirmation
+# The project uses only standard library modules:
+# - threading
+# - csv
+# - logging
+# - pathlib
+# - itertools
+# - collections
+# - unittest
