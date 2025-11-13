@@ -19,6 +19,12 @@ BuildChallenge/
 └── README.md
 ```
 
+## Requirements
+
+- Python 3.7+
+- All dependencies are from Python standard library (no external packages required)
+- See `requirements.txt` for details
+
 ## Quick Start
 
 ```bash
@@ -78,11 +84,6 @@ Price Range: $5.00 - $80.00
 Revenue by Region: East ($1,545), North ($1,210), South ($1,305), West ($1,625)
 ```
 
-## Requirements
-
-- Python 3.7+
-- All dependencies are from Python standard library (no external packages required)
-- See `requirements.txt` for details
 
 ## Author
 
