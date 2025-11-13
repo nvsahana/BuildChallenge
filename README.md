@@ -25,14 +25,21 @@ BuildChallenge/
 - All dependencies are from Python standard library (no external packages required)
 - See `requirements.txt` for details
 
-## Quick Start
+## Setup
 
+1. Clone the repository:
+```bash
+git clone https://github.com/nvsahana/BuildChallenge.git
+cd BuildChallenge
+```
+
+2. Run all tests:
 ```bash
 chmod +x setup.sh
 ./setup.sh
 ```
 
-Or run the demo:
+3. Or run the interactive demo:
 ```bash
 python3 demo.py
 ```
