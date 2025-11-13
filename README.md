@@ -5,11 +5,16 @@ This repository contains implementations of two programming assignments demonstr
 ## Project Structure
 ```
 BuildChallenge/
-├── assignment-1/          # Producer-Consumer Pattern (3 tests)
-├── assignment-2/          # Sales Analysis (6 tests)
-├── data/                  # Sample CSV data
-├── demo.py               # Interactive demo
-├── setup.sh              # Run all tests
+├── assignment-1/
+│   ├── producer_consumer.py
+│   └── main_test_producer_consumer.py
+├── assignment-2/
+│   ├── sales_analysis.py
+│   └── main_test_sales_analysis.py
+├── data/
+│   └── sales_data.csv
+├── demo.py
+├── setup.sh
 └── README.md
 ```
 
